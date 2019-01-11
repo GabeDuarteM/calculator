@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components/macro";
+import React from 'react'
+import styled from 'styled-components/macro'
 
 const StyledDisplay = styled.div`
   align-items: flex-end;
@@ -10,10 +10,22 @@ const StyledDisplay = styled.div`
   padding-bottom: 4px;
   padding-right: 16px;
   -webkit-app-region: drag;
-`;
+  cursor: default;
+  user-select: none;
+`
 
-const Display = ({ className }) => {
-  return <StyledDisplay className={className}>0</StyledDisplay>;
-};
+const Display = ({
+  className,
+  number,
+  isAddingDecimalSeparator,
+  decimalSeparator,
+}) => {
+  return (
+    <StyledDisplay data-testid="display" className={className}>
+      {number === 'NaN' ? 'Not a number' : number}
+      {isAddingDecimalSeparator ? decimalSeparator : ''}
+    </StyledDisplay>
+  )
+}
 
-export default Display;
+export default Display
